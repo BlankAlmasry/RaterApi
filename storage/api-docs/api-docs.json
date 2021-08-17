@@ -1,0 +1,21 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "RaterApi",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/login": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
