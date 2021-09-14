@@ -23,7 +23,7 @@ Route::get('/',[HomeController::class,'home']);
 
 Route::middleware(['client'])->group(function () {
     Route::get('/games',[GameController::class,'index']);
-    Route::post('/games',[GameController::class,'create']);
+    Route::post('/games',[GameController::class,'store']);
     Route::get('/games/{game}',[GameController::class,'show']);
     Route::patch('/games/{game}',[GameController::class,'update']);
     Route::delete('/games/{game}',[GameController::class,'delete']);

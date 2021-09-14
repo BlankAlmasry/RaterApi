@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Passport\Client;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 class Game extends Model
@@ -30,6 +31,10 @@ class Game extends Model
         };
     }
 
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
 
     public function getSlugOptions() : SlugOptions
     {

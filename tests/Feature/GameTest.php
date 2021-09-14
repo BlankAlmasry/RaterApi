@@ -47,7 +47,7 @@ class GameTest extends TestCase
     {
         Game::factory()->create(["client_id" => $this->client->getKey()]);
         $game = Game::first();
-        $response = $this->json('get','/api/games/'.$game->id,[],$this->header);
+        $response = $this->json('get','/api/games/'.$game->slug,[],$this->header);
         $response->assertStatus(200);
         $response->assertJson([
             'name' => $game->name,
@@ -99,7 +99,31 @@ class GameTest extends TestCase
         $response->assertStatus(404);
 
     }
+    /** @test */
+    public function User_must_have_a_client()
+    {
+        $game = Game::factory()->create();
+        self::assertInstanceOf(Client::class ,$game->client);
+    }
 
+    /** @test */
+
+    public function game_name_must_be_a_string()
+    {
+        $response = $this->json('post','/api/games' ,[
+            'name' => 12131,
+        ],$this->header);
+        $response->assertStatus(400);
+    }
+
+    /** @test */
+    public function game_name_cannot_be_empty()
+    {
+        $response = $this->json('post','/api/games' ,[
+            'name' => '',
+        ],$this->header);
+        $response->assertStatus(400);
+    }
 
 
 

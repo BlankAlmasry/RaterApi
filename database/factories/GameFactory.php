@@ -25,7 +25,7 @@ class GameFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            "client_id" => 1
+            "client_id" => Client::factory()->create()->id
         ];
     }
 }

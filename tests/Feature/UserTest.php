@@ -47,13 +47,11 @@ class UserTest extends TestCase
            "data","links","meta"
         ]);
 
-
         $response->assertStatus(200);
     }
 
     public function test_get_a_single_user()
     {
-        $this->withoutExceptionHandling();
         $response = $this->json(
             'get',
             "/api/games/{$this->game->slug}/users/{$this->user->slug}",
@@ -65,7 +63,6 @@ class UserTest extends TestCase
                 "rating" => $this->user->games()->first()->pivot->rating,
 
            ]);
-
 
         $response->assertStatus(200);
     }
@@ -133,5 +130,12 @@ class UserTest extends TestCase
         $response->assertJsonStructure([
             "data", "links", "meta"
         ]);
+    }
+
+    /** @test */
+    public function User_must_have_a_client()
+    {
+        $user = User::factory()->create();
+        self::assertInstanceOf(Client::class ,$user->client);
     }
 }
