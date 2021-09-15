@@ -18,17 +18,12 @@ class Game extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->withPivot('rating','rating_deviation','rating_volatility')->withTimestamps()->where('client_id',$this->client_id);
+        return $this->belongsToMany(User::class)->withPivot('rating','rating_deviation','rating_volatility')->withTimestamps();
     }
 
     public function matches()
     {
         return $this->hasMany(MatchUp::class)->where('state', '<>', 'deleted');
-    }
-    public function setRankingSystemAttribute($value){
-        if (in_array($value, ['numerical', 'divisional'])) {
-            $this->attributes['ranking_system'] = $value;
-        };
     }
 
     public function client()
