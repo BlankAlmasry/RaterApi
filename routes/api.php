@@ -31,6 +31,7 @@ Route::middleware(['client'])->group(function () {
     Route::get('/games/{game}/users/{user}',[GameController::class,'showUser']);
     Route::get('/users', [UserController::class, 'index']);
     Route::get('/users/{user}', [UserController::class, 'show']);
+    Route::delete('/users/{user}', [UserController::class, 'delete']);
     Route::get('/users/{user}/games', [UserController::class, 'indexGames']);
     Route::get('/users/{user}/matches', [UserController::class, 'indexMatches']);
     Route::get('/games/{game}/matches',[MatchController::class,'index']);

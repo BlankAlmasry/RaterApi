@@ -43,7 +43,7 @@ class MatchController extends Controller
         $game = $this->getGame($game);
         $match = $game->matches()->findOrFail($match);
         $match->delete();
-        return \response(["message", "resource deleted"], 200);
+        return response(["message", "resource deleted"], 200);
     }
 
     private function getGame($game)

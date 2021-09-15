@@ -36,9 +36,16 @@ class UserController extends Controller
             ->setStatusCode(200);
     }
 
+    public function delete($user)
+    {
+        $user = $this->getUser($user);
+        $user->delete();
+        return response(["message", "resource deleted"], 200);
+    }
+
     public function getUser($user)
     {
-        return User::where('client_id', $this->client->id)->where("slug", $user)->first();
+        return User::where('client_id', $this->client->id)->where("slug", $user)->firstOrFail();
     }
 
 }

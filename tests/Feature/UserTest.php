@@ -7,6 +7,7 @@ use App\Models\Game;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Str;
 use Laravel\Passport\Client;
 use Tests\TestCase;
 
@@ -138,4 +139,30 @@ class UserTest extends TestCase
         $user = User::factory()->create();
         self::assertInstanceOf(Client::class ,$user->client);
     }
+
+    /** @test */
+    public function can_delete_a_user()
+    {
+        $response = $this->json(
+            'delete',
+            "/api/users/{$this->user->slug}",
+            [],
+            $this->header
+        );
+        $response->assertStatus(200);
+        $this->assertDatabaseCount(User::class, 0);
+    }
+    /** @test */
+    public function fetching_non_existing_user_will_result_in_error()
+    {
+        $response = $this->json(
+            'get',
+            "/api/users/".Str::random(12),
+            [],
+            $this->header
+        );
+        $response->assertStatus(404);
+    }
+
+
 }
