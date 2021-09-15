@@ -58,7 +58,6 @@ class GameTest extends TestCase
     {
         $response = $this->json('post','/api/games',[
             'name' => 'League of Legends',
-            'ranked_system' => 'numbered',
         ],$this->header);
         $response->assertStatus(201)->assertJsonFragment(['name' => 'League of Legends']);
     }

@@ -13,7 +13,7 @@ class Game extends Model
 
     use HasSlug;
 
-    protected $fillable = ['name',  'ranking_system', 'client_id'];
+    protected $fillable = ['name', 'client_id'];
 
 
     public function users()

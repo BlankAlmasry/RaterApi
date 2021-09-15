@@ -23,7 +23,6 @@ class MatchUpFactory extends Factory
     {
         return [
             'game_id' => 1,
-            'team_length' => 1,
             ];
     }
 }

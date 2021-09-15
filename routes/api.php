@@ -34,10 +34,8 @@ Route::middleware(['client'])->group(function () {
     Route::get('/users/{user}/games', [UserController::class, 'indexGames']);
     Route::get('/users/{user}/matches', [UserController::class, 'indexMatches']);
     Route::get('/games/{game}/matches',[MatchController::class,'index']);
-    Route::post('/games/{game}/matches',[MatchController::class,'create']);
+    Route::post('/games/{game}/matches',[MatchController::class,'store']);
     Route::get('/games/{game}/matches/{match}',[MatchController::class,'show']);
-    Route::put('/games/{game}/matches/{match}',[MatchController::class,'update']);
-    Route::patch('/games/{game}/matches/{match}',[MatchController::class,'patch']);
     Route::delete('/games/{game}/matches/{match}',[MatchController::class,'delete']);
 });
 

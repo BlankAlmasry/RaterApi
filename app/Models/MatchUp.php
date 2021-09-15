@@ -8,10 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class MatchUp extends Model
 {
     use HasFactory;
-/*
- *
- * */
-    protected $fillable = ['game_id','team_length'];
+
+    protected $fillable = ['game_id'];
 
     protected $with = ['game','users'];
 
