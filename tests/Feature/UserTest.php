@@ -14,14 +14,10 @@ use Tests\TestCase;
 class UserTest extends TestCase
 {
     use RefreshDatabase;
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+
     public function setUp():void
     {
-        parent::setUp(); //
+        parent::setUp();
         $this->client = Client::factory()->create();
 
         $response = $this->post('/api/login', [
@@ -49,6 +45,18 @@ class UserTest extends TestCase
         ]);
 
         $response->assertStatus(200);
+    }
+
+    /** @test */
+    public function Unauthenticated_user_can_reach_index_endpoint()
+    {
+        $response = $this->json(
+            'get',
+            "/api/games/{$this->game->slug}/users",
+            [],
+        );
+
+        $response->assertStatus(401);
     }
 
     public function test_get_a_single_user()
