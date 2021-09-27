@@ -23,7 +23,7 @@ class GameTest extends TestCase
         parent::setUp(); //
         $this->client = Client::factory()->create();
 
-        $response = $this->post('/api/login', [
+        $response = $this->post('/login', [
             'grant_type' => 'client_credentials',
             'client_id' => $this->client->getKey(),
             'client_secret' => $this->client->secret,
@@ -36,7 +36,7 @@ class GameTest extends TestCase
         $this->withoutExceptionHandling();
 
         Game::factory()->count(10)->create(['client_id'=> $this->client->id]);
-        $response = $this->json('get','/api/games',[],$this->header);
+        $response = $this->json('get','/games',[],$this->header);
         $response->assertStatus(200);
         $response->assertJsonStructure([
             "data","meta","links"
@@ -47,7 +47,7 @@ class GameTest extends TestCase
     {
         Game::factory()->create(["client_id" => $this->client->getKey()]);
         $game = Game::first();
-        $response = $this->json('get','/api/games/'.$game->slug,[],$this->header);
+        $response = $this->json('get','/games/'.$game->slug,[],$this->header);
         $response->assertStatus(200);
         $response->assertJson([
             'name' => $game->name,
@@ -56,7 +56,7 @@ class GameTest extends TestCase
 
     public function test_an_api_can_create_a_game()
     {
-        $response = $this->json('post','/api/games',[
+        $response = $this->json('post','/games',[
             'name' => 'League of Legends',
         ],$this->header);
         $response->assertStatus(201)->assertJsonFragment(['name' => 'League of Legends']);
@@ -66,7 +66,7 @@ class GameTest extends TestCase
     {
         $game = Game::factory()->create(["client_id" => $this->client->getKey()]);
 
-        $response = $this->json('patch','/api/games/' . $game->slug,[
+        $response = $this->json('patch','/games/' . $game->slug,[
             'name' => 'League of Legends',
         ],$this->header);
         $response->assertStatus(200);
@@ -82,7 +82,7 @@ class GameTest extends TestCase
     public function test_an_invalid_patch_request_gets_validation_error()
     {
         $game = Game::factory()->create(["client_id" => $this->client->getKey()]);
-        $response = $this->json('patch','/api/games/' . $game->slug,[
+        $response = $this->json('patch','/games/' . $game->slug,[
             'name' => '',
         ],$this->header);
         $response->assertStatus(400);
@@ -91,9 +91,9 @@ class GameTest extends TestCase
     {
         $game = Game::factory()->create(["client_id" => $this->client->getKey()]);
 
-        $this->json('delete', "/api/games/{$game->slug}",[], $this->header);
+        $this->json('delete', "/games/{$game->slug}",[], $this->header);
 
-        $response = $this->json('get', "/api/games/{$game->slug}",[], $this->header);
+        $response = $this->json('get', "/games/{$game->slug}",[], $this->header);
 
         $response->assertStatus(404);
 
@@ -109,7 +109,7 @@ class GameTest extends TestCase
 
     public function game_name_must_be_a_string()
     {
-        $response = $this->json('post','/api/games' ,[
+        $response = $this->json('post','/games' ,[
             'name' => 12131,
         ],$this->header);
         $response->assertStatus(400);
@@ -118,7 +118,7 @@ class GameTest extends TestCase
     /** @test */
     public function game_name_cannot_be_empty()
     {
-        $response = $this->json('post','/api/games' ,[
+        $response = $this->json('post','/games' ,[
             'name' => '',
         ],$this->header);
         $response->assertStatus(400);

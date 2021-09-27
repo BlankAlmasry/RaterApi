@@ -21,7 +21,7 @@ class HomeTest extends TestCase
         parent::setUp(); //
         $this->client = Client::factory()->create();
 
-        $response = $this->post('/api/login', [
+        $response = $this->post('/login', [
             'grant_type' => 'client_credentials',
             'client_id' => $this->client->getKey(),
             'client_secret' => $this->client->secret,
@@ -30,7 +30,7 @@ class HomeTest extends TestCase
     }
     public function test_get_home()
     {
-        $response = $this->json('get', '/api',[], $this->header);
+        $response = $this->json('get', '/',[], $this->header);
         $response->assertStatus(200);
         $response->assertJsonStructure([
             "description", "title", "links"

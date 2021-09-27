@@ -20,7 +20,7 @@ class UserTest extends TestCase
         parent::setUp();
         $this->client = Client::factory()->create();
 
-        $response = $this->post('/api/login', [
+        $response = $this->post('/login', [
             'grant_type' => 'client_credentials',
             'client_id' => $this->client->getKey(),
             'client_secret' => $this->client->secret,
@@ -36,7 +36,7 @@ class UserTest extends TestCase
     {
         $response = $this->json(
             'get',
-            "/api/games/{$this->game->slug}/users",
+            "/games/{$this->game->slug}/users",
             [],
             $this->header
         );
@@ -52,7 +52,7 @@ class UserTest extends TestCase
     {
         $response = $this->json(
             'get',
-            "/api/games/{$this->game->slug}/users",
+            "/games/{$this->game->slug}/users",
             [],
         );
 
@@ -63,7 +63,7 @@ class UserTest extends TestCase
     {
         $response = $this->json(
             'get',
-            "/api/games/{$this->game->slug}/users/{$this->user->slug}",
+            "/games/{$this->game->slug}/users/{$this->user->slug}",
             [],
             $this->header
         );
@@ -81,7 +81,7 @@ class UserTest extends TestCase
 
         $response = $this->json(
             'get',
-            "/api/users",
+            "/users",
             [],
             $this->header
         );
@@ -97,7 +97,7 @@ class UserTest extends TestCase
     {
         $response = $this->json(
             'get',
-            "/api/users/{$this->user->slug}",
+            "/users/{$this->user->slug}",
             [],
             $this->header
         );
@@ -117,7 +117,7 @@ class UserTest extends TestCase
     {
         $response = $this->json(
             'get',
-            "/api/users/{$this->user->slug}/games",
+            "/users/{$this->user->slug}/games",
             [],
             $this->header
         );
@@ -131,7 +131,7 @@ class UserTest extends TestCase
     {
         $response = $this->json(
             'get',
-            "/api/users/{$this->user->slug}/matches",
+            "/users/{$this->user->slug}/matches",
             [],
             $this->header
         );
@@ -153,7 +153,7 @@ class UserTest extends TestCase
     {
         $response = $this->json(
             'delete',
-            "/api/users/{$this->user->slug}",
+            "/users/{$this->user->slug}",
             [],
             $this->header
         );
@@ -165,7 +165,7 @@ class UserTest extends TestCase
     {
         $response = $this->json(
             'get',
-            "/api/users/".Str::random(12),
+            "/users/".Str::random(12),
             [],
             $this->header
         );

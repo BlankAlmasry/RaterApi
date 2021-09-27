@@ -18,7 +18,7 @@ class MatchTest extends TestCase
         parent::setUp();
         $this->client = Client::factory()->create();
 
-        $response = $this->post('/api/login', [
+        $response = $this->post('/login', [
             'grant_type' => 'client_credentials',
             'client_id' => $this->client->getKey(),
             'client_secret' => $this->client->secret,
@@ -31,7 +31,7 @@ class MatchTest extends TestCase
     public function test_an_api_can_create_new_match_for_non_existing_users()
     {
         $response = $this->json('post',
-            "/api/games/{$this->game->slug}/matches",
+            "/games/{$this->game->slug}/matches",
             $this->validFields()
             , $this->header
         );
@@ -49,7 +49,7 @@ class MatchTest extends TestCase
         $match = MatchUp::factory()->create();
         $response = $this->json(
             'get',
-            "api/games/{$match->game->slug}/matches",
+            "/games/{$match->game->slug}/matches",
             [],
             $this->header
         );
@@ -65,7 +65,7 @@ class MatchTest extends TestCase
     {
         $response = $this->json(
             'get',
-            "api/games/{$this->game->slug}/matches",
+            "/games/{$this->game->slug}/matches",
             [],
             $this->header
         );
@@ -81,7 +81,7 @@ class MatchTest extends TestCase
         $match = MatchUp::factory()->create();
         $response = $this->json(
             'get',
-            "api/games/{$match->game->slug}/matches/{$match->id}",
+            "/games/{$match->game->slug}/matches/{$match->id}",
             [],
             $this->header
         );
@@ -99,7 +99,7 @@ class MatchTest extends TestCase
     {
         $response = $this->json(
             'get',
-            "api/games/{$this->game->slug}/matches/1",
+            "/games/{$this->game->slug}/matches/1",
             [],
             $this->header
         );
@@ -112,7 +112,7 @@ class MatchTest extends TestCase
     {
         $response = $this->json(
             'delete',
-            "api/games/{$this->game->slug}/matches/1",
+            "/games/{$this->game->slug}/matches/1",
             [],
             $this->header
         );
@@ -123,7 +123,7 @@ class MatchTest extends TestCase
     public function test_uneven_teams_would_result_in_an_error()
     {
         $response = $this->json('post',
-            "/api/games/{$this->game->slug}/matches",
+            "/games/{$this->game->slug}/matches",
             $this->validFields([
                 "teams" => [
                     ["users" => ["test1"], "result" => 0],
@@ -141,7 +141,7 @@ class MatchTest extends TestCase
     public function test_more_than_2_teams_are_not_supported()
     {
         $response = $this->json('post',
-            "/api/games/{$this->game->slug}/matches",
+            "/games/{$this->game->slug}/matches",
             $this->validFields([
                 'teams' => [
                     ["users" => ["test1"], "result" => 0],
@@ -157,7 +157,7 @@ class MatchTest extends TestCase
     public function Duplicate_users_entry_would_result_in_400()
     {
         $response = $this->json('post',
-            "/api/games/{$this->game->slug}/matches",
+            "/games/{$this->game->slug}/matches",
             $this->validFields([
                 "teams" => [
                     ["users" => ["test1", "test3"], "result" => 0],
@@ -176,7 +176,7 @@ class MatchTest extends TestCase
     public function Once_Match_created_result_will_change_players_rating_accordingly()
     {
         $response = $this->json('post',
-            "/api/games/{$this->game->slug}/matches",
+            "/games/{$this->game->slug}/matches",
             $this->validFields(),
             $this->header
         );
@@ -191,8 +191,8 @@ class MatchTest extends TestCase
     {
         $match = MatchUp::factory()->create();
 
-        $this->json('delete', "/api/games/{$match->game->slug}/matches/{$match->id}", [], $this->header);
-        $response = $this->json('get', "/api/games/{$match->game->slug}/matches/{$match->id}", [], $this->header);
+        $this->json('delete', "/games/{$match->game->slug}/matches/{$match->id}", [], $this->header);
+        $response = $this->json('get', "/games/{$match->game->slug}/matches/{$match->id}", [], $this->header);
 
         $response->assertStatus(404);
 
@@ -202,7 +202,7 @@ class MatchTest extends TestCase
     public function Inserting_empty_users_to_a_match_will_result_in_400()
     {
         $response = $this->json('post',
-            "/api/games/{$this->game->slug}/matches",
+            "/games/{$this->game->slug}/matches",
             [
                 'teams' => [
                     ["users" => ["test1", ""], "result" => 1],
