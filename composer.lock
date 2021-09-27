@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05a544ac055eac571cf5df1693e1307f",
+    "content-hash": "0134fc39cda5862b274738e5719b8bdd",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3844,16 +3844,16 @@
         },
         {
             "name": "swagger-api/swagger-ui",
-            "version": "v3.52.2",
+            "version": "v3.52.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swagger-api/swagger-ui.git",
-                "reference": "e5611d72ff6b4affb373fa8859cc5feb6981f367"
+                "reference": "aa9f2e6733327b5f042f2529db76558d9c09bed2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/e5611d72ff6b4affb373fa8859cc5feb6981f367",
-                "reference": "e5611d72ff6b4affb373fa8859cc5feb6981f367",
+                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/aa9f2e6733327b5f042f2529db76558d9c09bed2",
+                "reference": "aa9f2e6733327b5f042f2529db76558d9c09bed2",
                 "shasum": ""
             },
             "type": "library",
@@ -3899,9 +3899,9 @@
             ],
             "support": {
                 "issues": "https://github.com/swagger-api/swagger-ui/issues",
-                "source": "https://github.com/swagger-api/swagger-ui/tree/v3.52.2"
+                "source": "https://github.com/swagger-api/swagger-ui/tree/v3.52.3"
             },
-            "time": "2021-09-13T12:46:28+00:00"
+            "time": "2021-09-20T12:12:56+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

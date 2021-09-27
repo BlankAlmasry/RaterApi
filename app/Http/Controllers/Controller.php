@@ -13,20 +13,12 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     /**
-     * @SWG\Swagger(
-     *     basePath="",
-     *     schemes={"http", "https"},
-     *     host=L5_SWAGGER_CONST_HOST,
-     *     @SWG\Info(
-     *         version="1.0.0",
-     *         title="L5 Swagger API",
-     *         description="L5 Swagger API description",
-     *         @SWG\Contact(
-     *             email="your-email@domain.com"
-     *         ),
-     *     )
+     * @OA\Info(
+     *    title="RaterApi",
+     *    version="1.0.0",
      * )
      */
+
     public function __construct()
     {
         if (!request()->bearerToken()) {

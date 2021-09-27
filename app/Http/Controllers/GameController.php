@@ -10,12 +10,55 @@ use App\Models\Game;
 
 class GameController extends Controller
 {
+
     public function index()
     {
         return (GameResource::collection($this->client->games()->paginate(10)))
             ->response()
             ->setStatusCode(200);
     }
+
+    /**
+     * @OA\Post(
+     * path="/api/games",
+     * summary="Create a game",
+     * description="Create a game by name",
+     * operationId="authLogin",
+     * tags={"games"},
+     * @OA\RequestBody(
+     *    required=true,
+     *    description="Pass game name",
+     *    @OA\JsonContent(
+     *       required={"name"},
+     *       @OA\Property(property="name", type="string", format="name", example="League of legends"),
+     *    ),
+     * ),
+     * @OA\Response(
+     *    response=201,
+     *    description="Wrong credentials response",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="A game has been created"),
+     *       @OA\Property(property="data", type="object"),
+     *  ),
+     *),
+     * @OA\Response(
+     *    response=400,
+     *    description="Wrong credentials response",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="Name is required")
+     *        )
+     *     ),
+     *
+     * @OA\Response(
+     *    response=401,
+     *    description="Unathourized request, you need api token",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="Invalid or no api token, authorize with a valid api please")
+     *        )
+     *     )
+     *
+     * )
+     */
 
     public function store(StoreGameRequest $request)
     {

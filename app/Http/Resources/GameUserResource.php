@@ -23,7 +23,7 @@ class GameUserResource extends JsonResource
             'links' => [
                 [
                     'rel' => 'self',
-                    'href' => '/api/users/' .$this->slug,
+                    'href' => '/api/games/' .$this->slug,
                 ],
             ]
         ];

@@ -7,29 +7,6 @@ class HomeController extends Controller
 {
     public function home()
     {
-
-        /**
-         * @OA\Get(path="/store/inventory",
-         *   tags={"store"},
-         *   summary="Returns pet inventories by status",
-         *   description="Returns a map of status codes to quantities",
-         *   operationId="getInventory",
-         *   parameters={},
-         *   @OA\Response(
-         *     response=200,
-         *     description="successful operation",
-         *     @OA\Schema(
-         *       additionalProperties={
-         *         "type":"integer",
-         *         "format":"int32"
-         *       }
-         *     )
-         *   ),
-         *   security={{
-         *     "api_key":{}
-         *   }}
-         * )
-         */
         return \response()->json([
             "title" => "RaterApi",
             "description" => "RaterApi is a rating api, you can create games, matches between users in these games and
