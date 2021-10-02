@@ -3,11 +3,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{config('l5-swagger.documentations.'.$documentation.'.api.title')}}</title>
+    <title>RaterApi</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:300,600|Titillium+Web:400,600,700" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{{ l5_swagger_asset($documentation, 'swagger-ui.css') }}" >
+    @if(env('APP_ENV') === "local")
+    <link rel="stylesheet" type="text/css" href="{{ l5_swagger_asset($documentation, 'swagger-ui.css') }}" >
   <link rel="icon" type="image/png" href="{{ l5_swagger_asset($documentation, 'favicon-32x32.png') }}" sizes="32x32" />
   <link rel="icon" type="image/png" href="{{ l5_swagger_asset($documentation, 'favicon-16x16.png') }}" sizes="16x16" />
+    @else
+        <link rel="stylesheet" type="text/css" href="{{str_replace( 'http://', 'https://', l5_swagger_asset($documentation, 'swagger-ui.css')) }}" >
+        <link rel="icon" type="image/png" href="{{str_replace( 'http://', 'https://', l5_swagger_asset($documentation, 'favicon-32x32.png')) }}" sizes="32x32" />
+        <link rel="icon" type="image/png" href="{{str_replace( 'http://', 'https://', l5_swagger_asset($documentation, 'favicon-16x16.png')) }}" sizes="16x16" />
+    @endif
+
   <style>
     html
     {
@@ -66,9 +73,14 @@
 </svg>
 
 <div id="swagger-ui"></div>
-
+@if(env('APP_ENV') === "local")
 <script src="{{ l5_swagger_asset($documentation, 'swagger-ui-bundle.js') }}"> </script>
 <script src="{{ l5_swagger_asset($documentation, 'swagger-ui-standalone-preset.js') }}"> </script>
+@else
+
+    <script src="{{   str_replace( 'http://', 'https://',  l5_swagger_asset($documentation, 'swagger-ui-bundle.js')) }}"> </script>
+    <script src="{{   str_replace( 'http://', 'https://', l5_swagger_asset($documentation, 'swagger-ui-standalone-preset.js')) }}"> </script>
+@endif
 <script>
 window.onload = function() {
   // Build a system

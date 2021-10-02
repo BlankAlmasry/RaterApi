@@ -6,6 +6,7 @@ use Blankalmasry\Glicko2\Rating\Rating;
 use Blankalmasry\Glicko2\Glicko2;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -15,6 +16,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        if($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
         $this->app->bind('rating',function (){
            return new Rating();
         });

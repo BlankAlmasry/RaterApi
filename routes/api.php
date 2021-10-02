@@ -19,7 +19,6 @@ use Laravel\Passport\Http\Controllers\AccessTokenController;
 
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::post('/login', [AccessTokenController::class,'issueToken']);
-Route::get('/',[HomeController::class,'home']);
 
 Route::middleware(['client'])->group(function () {
     Route::get('/games',[GameController::class,'index']);

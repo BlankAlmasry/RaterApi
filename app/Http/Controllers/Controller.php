@@ -12,12 +12,6 @@ use Lcobucci\JWT\Token\Parser;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    /**
-     * @OA\Info(
-     *    title="RaterApi",
-     *    version="1.0.0",
-     * )
-     */
 
     public function __construct()
     {

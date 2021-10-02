@@ -1,12 +1,12 @@
 {
-    "swagger": "2.0",
+    "openapi": "3.0.1",
     "info": {
-        "description": "Rating API, uses Glicko2 rating algorithim. feel free to contact me for a permenant api token <br><b>Public Bearer token</b>:",
-        "version": "0.1.0",
         "title": "RaterApi",
+        "description": "Rating API, uses Glicko2 rating algorithim. feel free to contact me for a permenant api token <br><b>Public Bearer Token</b>:<small>eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiMDQwOGRiODExN2M2NjMwYWM4Y2IxYmE3NDc1OTcwZWUwNzNmYjE4MzkzNWYxOWI0OGNjMTgwNWQ2Mzg0YjEwMjIyZDRhMjY4MDRjMzI0MmEiLCJpYXQiOjE2MzMyMDQ0NjEuMTc0OTcyLCJuYmYiOjE2MzMyMDQ0NjEuMTc0OTc3LCJleHAiOjE2NjQ3NDA0NjAuNjk0MjY1LCJzdWIiOiIiLCJzY29wZXMiOltdfQ.gi46HjGFj3gO0Xh7XjfAdltyt8sul6GhkD3qaagtf4ByLAkb6R4PXmNyZxOcmM0yRA3SRAAiVGQ2PekXxZWVeucG2HjeeiQ3EECt1AsDM3o1YBQ3k_QSKl6JflzNoThjZovsOjQAovgFSTO8AzR_IUMlNl9MjLA9pwVZSdPH6MnHP2CgVSFIVqAbIFCgWhqDANUTIrv41hcF6GtoJemSYbYeZ6HHwRFPEbQD6OqPgdm56q5jsy8NhG7qouKjLncycdWPkY0kBxG-FA4fhBWMX54aWSfaEAbNIMkfXq_j6QiDoUe5wU7RH6W_Eetl7S-419ItcQ9XRWi0LJyTJ0e8AXb78fWkVVGDp1Pm43ZBok3X1Z8HJvqoKEoiatOrokvCedXI0zCgHLq94KcLvmTF83WfEerYb4THrMLcD73gBFElMHyQvSDBIcdQ6-PMJ8-dyDN_8uCbev0uQA8ZmuH94JZyUFeiu5w_ITep70tywK6KPVEooVkCZkJ8g8cRVIqfnRxeRLTtx2Cvhrlp9JzFgbyJM-jslZfyLluVWW-nHyn6BSE5pIYID0IVkL4scM8GRfVxRyQVG5yjliw5AWys25MZFHWrivSt7trPaLPDbPQ3drua_wJS5zBIrbSZFNoirTZddp-theonGMqIRX6XxBKf3w13ywt912TtxIhFIFI</small>",
         "contact": {
             "email": "Blankhussien@gmail.com"
-        }
+        },
+        "version": "0.1.0"
     },
     "tags": [
         {
@@ -34,58 +34,62 @@
                 "responses": {
                     "200": {
                         "description": "Success",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "name": {
-                                                "type": "string",
-                                                "example": "League of legends"
-                                            },
-                                            "created_at": {
-                                                "type": "string",
-                                                "example": "1 hour ago"
-                                            },
-                                            "links": {
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "rel": {
-                                                            "type": "string"
-                                                        },
-                                                        "href": {
-                                                            "type": "string"
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "League of legends"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "1 hour ago"
+                                                    },
+                                                    "links": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "rel": {
+                                                                    "type": "string"
+                                                                },
+                                                                "href": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
                                             }
-                                        }
-                                    }
-                                },
-                                "meta": {
-                                    "type": "object",
-                                    "properties": {
-                                        "first_page": {
-                                            "type": "string"
                                         },
-                                        "etc....": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "links": {
-                                    "type": "object",
-                                    "properties": {
-                                        "first_page": {
-                                            "type": "string"
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "first_page": {
+                                                    "type": "string"
+                                                },
+                                                "etc....": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         },
-                                        "etc....": {
-                                            "type": "string"
+                                        "links": {
+                                            "type": "object",
+                                            "properties": {
+                                                "first_page": {
+                                                    "type": "string"
+                                                },
+                                                "etc....": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -93,7 +97,8 @@
                         }
                     },
                     "401": {
-                        "description": "Unauthorized"
+                        "description": "Unauthorized",
+                        "content": {}
                     }
                 }
             },
@@ -104,28 +109,32 @@
                 "summary": "Create a new game",
                 "description": "Create a game so you can arrange matches for your own users",
                 "operationId": "addGame",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Game details",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/Game"
+                "requestBody": {
+                    "description": "Game details",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Game"
+                            }
                         }
-                    }
-                ],
+                    },
+                    "required": true
+                },
                 "responses": {
                     "201": {
-                        "description": "Game created"
+                        "description": "Game created",
+                        "content": {}
                     },
                     "400": {
-                        "description": "Invalid input"
+                        "description": "Invalid input",
+                        "content": {}
                     },
                     "401": {
-                        "description": "Unauthorized"
+                        "description": "Unauthorized",
+                        "content": {}
                     }
-                }
+                },
+                "x-codegen-request-body-name": "body"
             }
         },
         "/games/{gameSlug}": {
@@ -142,88 +151,43 @@
                         "in": "path",
                         "description": "Slug of game to return",
                         "required": true,
-                        "type": "string"
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Success",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "name": {
-                                    "type": "string",
-                                    "example": "Pubg"
-                                },
-                                "created_at": {
-                                    "type": "string",
-                                    "example": "1 hour ago"
-                                },
-                                "links": {
-                                    "type": "string",
-                                    "example": [
-                                        {
-                                            "rel": "self",
-                                            "href": "/api/games/league-of-legends"
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Pubg"
                                         },
-                                        {
-                                            "rel": "matches",
-                                            "href": "/api/games/league-of-legends/matches"
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "1 hour ago"
                                         },
-                                        {
-                                            "rel": "users",
-                                            "href": "/api/games/league-of-legends/users"
+                                        "links": {
+                                            "type": "string",
+                                            "example": ""
                                         }
-                                    ]
+                                    }
                                 }
                             }
                         }
                     },
                     "401": {
-                        "description": "Unauthroized"
+                        "description": "Unauthroized",
+                        "content": {}
                     },
                     "404": {
-                        "description": "Not found"
-                    }
-                }
-            },
-            "patch": {
-                "tags": [
-                    "game"
-                ],
-                "summary": "Updates a game name",
-                "description": "Can update game name only for now",
-                "operationId": "updateGame",
-                "parameters": [
-                    {
-                        "name": "gameSlug",
-                        "in": "path",
-                        "description": "Slug of game to return",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Game details",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/Game"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Updated successfully"
-                    },
-                    "400": {
-                        "description": "Invalid input"
-                    },
-                    "401": {
-                        "description": "Invalid or no api token, authorize with a valid api please"
-                    },
-                    "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "content": {}
                     }
                 }
             },
@@ -240,20 +204,74 @@
                         "in": "path",
                         "description": "Game slug to delete the game",
                         "required": true,
-                        "type": "string"
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "success"
+                        "description": "success",
+                        "content": {}
                     },
                     "401": {
-                        "description": "Unathourized"
+                        "description": "Unathourized",
+                        "content": {}
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "content": {}
                     }
                 }
+            },
+            "patch": {
+                "tags": [
+                    "game"
+                ],
+                "summary": "Updates a game name",
+                "description": "Can update game name only for now",
+                "operationId": "updateGame",
+                "parameters": [
+                    {
+                        "name": "gameSlug",
+                        "in": "path",
+                        "description": "Slug of game to return",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Game details",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Game"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully",
+                        "content": {}
+                    },
+                    "400": {
+                        "description": "Invalid input",
+                        "content": {}
+                    },
+                    "401": {
+                        "description": "Invalid or no api token, authorize with a valid api please",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {}
+                    }
+                },
+                "x-codegen-request-body-name": "body"
             }
         },
         "/game/{gameSlug}/users": {
@@ -270,79 +288,84 @@
                         "in": "path",
                         "description": "Slug of game",
                         "required": true,
-                        "type": "string"
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Success",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "name": {
-                                                "type": "string",
-                                                "example": "John doe"
-                                            },
-                                            "rank": {
-                                                "type": "string",
-                                                "example": "Challenger"
-                                            },
-                                            "rating": {
-                                                "type": "integer",
-                                                "format": "int32",
-                                                "example": 2700
-                                            },
-                                            "rating_deviation": {
-                                                "type": "integer",
-                                                "format": "int32",
-                                                "example": 45
-                                            },
-                                            "rating_volatility": {
-                                                "type": "integer",
-                                                "format": "int32",
-                                                "example": 0.5921341
-                                            },
-                                            "links": {
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "rel": {
-                                                            "type": "string"
-                                                        },
-                                                        "href": {
-                                                            "type": "string"
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "John doe"
+                                                    },
+                                                    "rank": {
+                                                        "type": "string",
+                                                        "example": "Challenger"
+                                                    },
+                                                    "rating": {
+                                                        "type": "integer",
+                                                        "format": "int32",
+                                                        "example": 2700
+                                                    },
+                                                    "rating_deviation": {
+                                                        "type": "integer",
+                                                        "format": "int32",
+                                                        "example": 45
+                                                    },
+                                                    "rating_volatility": {
+                                                        "type": "integer",
+                                                        "format": "int32"
+                                                    },
+                                                    "links": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "rel": {
+                                                                    "type": "string"
+                                                                },
+                                                                "href": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
                                             }
-                                        }
-                                    }
-                                },
-                                "meta": {
-                                    "type": "object",
-                                    "properties": {
-                                        "first_page": {
-                                            "type": "string"
                                         },
-                                        "etc....": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "links": {
-                                    "type": "object",
-                                    "properties": {
-                                        "first_page": {
-                                            "type": "string"
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "first_page": {
+                                                    "type": "string"
+                                                },
+                                                "etc....": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         },
-                                        "etc....": {
-                                            "type": "string"
+                                        "links": {
+                                            "type": "object",
+                                            "properties": {
+                                                "first_page": {
+                                                    "type": "string"
+                                                },
+                                                "etc....": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -350,10 +373,12 @@
                         }
                     },
                     "401": {
-                        "description": "Unauthorized"
+                        "description": "Unauthorized",
+                        "content": {}
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "content": {}
                     }
                 }
             }
@@ -372,57 +397,64 @@
                         "in": "path",
                         "description": "Slug of game",
                         "required": true,
-                        "type": "string"
+                        "schema": {
+                            "type": "string"
+                        }
                     },
                     {
                         "name": "userSlug",
                         "in": "path",
                         "description": "the user slug (out-of-his-name)",
                         "required": true,
-                        "type": "string"
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
                     "201": {
                         "description": "Success",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "name": {
-                                    "type": "string",
-                                    "example": "john-doe"
-                                },
-                                "rank": {
-                                    "type": "string",
-                                    "example": "Gold IV"
-                                },
-                                "rating": {
-                                    "type": "integer",
-                                    "format": "int32",
-                                    "example": 1650
-                                },
-                                "rating_deviation": {
-                                    "type": "integer",
-                                    "format": "int32",
-                                    "example": 120
-                                },
-                                "rating_volatility": {
-                                    "type": "integer",
-                                    "format": "int32",
-                                    "example": 0.58
-                                },
-                                "links": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "rel": {
-                                                "type": "string",
-                                                "example": "self"
-                                            },
-                                            "href": {
-                                                "type": "string",
-                                                "example": "/game/users/john-doe"
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "example": "john-doe"
+                                        },
+                                        "rank": {
+                                            "type": "string",
+                                            "example": "Gold IV"
+                                        },
+                                        "rating": {
+                                            "type": "integer",
+                                            "format": "int32",
+                                            "example": 1650
+                                        },
+                                        "rating_deviation": {
+                                            "type": "integer",
+                                            "format": "int32",
+                                            "example": 120
+                                        },
+                                        "rating_volatility": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "links": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "rel": {
+                                                        "type": "string",
+                                                        "example": "self"
+                                                    },
+                                                    "href": {
+                                                        "type": "string",
+                                                        "example": "/game/users/john-doe"
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -431,13 +463,16 @@
                         }
                     },
                     "400": {
-                        "description": "Invalid input"
+                        "description": "Invalid input",
+                        "content": {}
                     },
                     "401": {
-                        "description": "Unauthorized"
+                        "description": "Unauthorized",
+                        "content": {}
                     },
                     "404": {
-                        "description": "Game not found"
+                        "description": "Game not found",
+                        "content": {}
                     }
                 }
             }
@@ -456,141 +491,133 @@
                         "in": "path",
                         "description": "Slug of game you want to get matches from, it will return empty values if there were no matches",
                         "required": true,
-                        "type": "string"
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "id": {
-                                                "type": "integer",
-                                                "example": 1
-                                            },
-                                            "team_length": {
-                                                "type": "integer",
-                                                "example": 2
-                                            },
-                                            "game": {
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
                                                 "type": "object",
                                                 "properties": {
-                                                    "name": {
-                                                        "type": "string",
-                                                        "example": "Pubg"
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
                                                     },
-                                                    "created_at": {
-                                                        "type": "string",
-                                                        "example": "1 hour ago"
+                                                    "team_length": {
+                                                        "type": "integer",
+                                                        "example": 2
+                                                    },
+                                                    "game": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "name": {
+                                                                "type": "string",
+                                                                "example": "Pubg"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string",
+                                                                "example": "1 hour ago"
+                                                            },
+                                                            "links": {
+                                                                "type": "string",
+                                                                "example": ""
+                                                            }
+                                                        }
+                                                    },
+                                                    "users": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "john-doe"
+                                                                },
+                                                                "rank": {
+                                                                    "type": "string",
+                                                                    "example": "Gold IV"
+                                                                },
+                                                                "rating": {
+                                                                    "type": "integer",
+                                                                    "format": "int32",
+                                                                    "example": 1650
+                                                                },
+                                                                "rating_deviation": {
+                                                                    "type": "integer",
+                                                                    "format": "int32",
+                                                                    "example": 120
+                                                                },
+                                                                "rating_volatility": {
+                                                                    "type": "integer",
+                                                                    "format": "int32"
+                                                                },
+                                                                "links": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "rel": {
+                                                                                "type": "string",
+                                                                                "example": "self"
+                                                                            },
+                                                                            "href": {
+                                                                                "type": "string",
+                                                                                "example": "/game/users/john-doe"
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
                                                     },
                                                     "links": {
-                                                        "type": "string",
-                                                        "example": [
-                                                            {
-                                                                "rel": "self",
-                                                                "href": "/api/games/league-of-legends"
-                                                            },
-                                                            {
-                                                                "rel": "matches",
-                                                                "href": "/api/games/league-of-legends/matches"
-                                                            },
-                                                            {
-                                                                "rel": "users",
-                                                                "href": "/api/games/league-of-legends/users"
-                                                            }
-                                                        ]
-                                                    }
-                                                }
-                                            },
-                                            "users": {
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "name": {
-                                                            "type": "string",
-                                                            "example": "john-doe"
-                                                        },
-                                                        "rank": {
-                                                            "type": "string",
-                                                            "example": "Gold IV"
-                                                        },
-                                                        "rating": {
-                                                            "type": "integer",
-                                                            "format": "int32",
-                                                            "example": 1650
-                                                        },
-                                                        "rating_deviation": {
-                                                            "type": "integer",
-                                                            "format": "int32",
-                                                            "example": 120
-                                                        },
-                                                        "rating_volatility": {
-                                                            "type": "integer",
-                                                            "format": "int32",
-                                                            "example": 0.58
-                                                        },
-                                                        "links": {
-                                                            "type": "array",
-                                                            "items": {
-                                                                "type": "object",
-                                                                "properties": {
-                                                                    "rel": {
-                                                                        "type": "string",
-                                                                        "example": "self"
-                                                                    },
-                                                                    "href": {
-                                                                        "type": "string",
-                                                                        "example": "/game/users/john-doe"
-                                                                    }
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "rel": {
+                                                                    "type": "string"
+                                                                },
+                                                                "href": {
+                                                                    "type": "string"
                                                                 }
                                                             }
                                                         }
                                                     }
                                                 }
-                                            },
-                                            "links": {
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "rel": {
-                                                            "type": "string"
-                                                        },
-                                                        "href": {
-                                                            "type": "string"
-                                                        }
-                                                    }
+                                            }
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "first_page": {
+                                                    "type": "string"
+                                                },
+                                                "etc....": {
+                                                    "type": "string"
                                                 }
                                             }
-                                        }
-                                    }
-                                },
-                                "meta": {
-                                    "type": "object",
-                                    "properties": {
-                                        "first_page": {
-                                            "type": "string"
                                         },
-                                        "etc....": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "links": {
-                                    "type": "object",
-                                    "properties": {
-                                        "first_page": {
-                                            "type": "string"
-                                        },
-                                        "etc....": {
-                                            "type": "string"
+                                        "links": {
+                                            "type": "object",
+                                            "properties": {
+                                                "first_page": {
+                                                    "type": "string"
+                                                },
+                                                "etc....": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -612,32 +639,41 @@
                         "in": "path",
                         "description": "Slug of game you want to get matches from, it will return empty values if there were no matches",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "teams",
-                        "in": "body",
-                        "description": "SEND 2 TEAMS(object) EXACTLY in \"teams\" array, can be just 2 teams of a single player each, result must be 1, 0 or 0.5",
-                        "required": true,
                         "schema": {
-                            "$ref": "#/definitions/teams"
+                            "type": "string"
                         }
                     }
                 ],
+                "requestBody": {
+                    "description": "SEND 2 TEAMS(object) EXACTLY in \"teams\" array, can be just 2 teams of a single player each, result must be 1, 0 or 0.5",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/teams"
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "responses": {
                     "201": {
-                        "description": "Match created"
+                        "description": "Match created",
+                        "content": {}
                     },
                     "400": {
-                        "description": "Invalid input"
+                        "description": "Invalid input",
+                        "content": {}
                     },
                     "401": {
-                        "description": "Invalid or no api token, authorize with a valid api please"
+                        "description": "Invalid or no api token, authorize with a valid api please",
+                        "content": {}
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "content": {}
                     }
-                }
+                },
+                "x-codegen-request-body-name": "teams"
             }
         },
         "/game/{gameSlug}/matches/{matchId}": {
@@ -654,117 +690,111 @@
                         "in": "path",
                         "description": "Slug of game",
                         "required": true,
-                        "type": "string"
+                        "schema": {
+                            "type": "string"
+                        }
                     },
                     {
                         "name": "matchId",
                         "in": "path",
                         "description": "the match ID",
                         "required": true,
-                        "type": "integer"
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "id": {
-                                    "type": "integer",
-                                    "example": 1
-                                },
-                                "team_length": {
-                                    "type": "integer",
-                                    "example": 2
-                                },
-                                "game": {
+                        "content": {
+                            "*/*": {
+                                "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "name": {
-                                            "type": "string",
-                                            "example": "Pubg"
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
                                         },
-                                        "created_at": {
-                                            "type": "string",
-                                            "example": "1 hour ago"
+                                        "team_length": {
+                                            "type": "integer",
+                                            "example": 2
                                         },
-                                        "links": {
-                                            "type": "string",
-                                            "example": [
-                                                {
-                                                    "rel": "self",
-                                                    "href": "/api/games/league-of-legends"
+                                        "game": {
+                                            "type": "object",
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Pubg"
                                                 },
-                                                {
-                                                    "rel": "matches",
-                                                    "href": "/api/games/league-of-legends/matches"
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "1 hour ago"
                                                 },
-                                                {
-                                                    "rel": "users",
-                                                    "href": "/api/games/league-of-legends/users"
+                                                "links": {
+                                                    "type": "string",
+                                                    "example": ""
                                                 }
-                                            ]
-                                        }
-                                    }
-                                },
-                                "users": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "name": {
-                                                "type": "string",
-                                                "example": "john-doe"
-                                            },
-                                            "rank": {
-                                                "type": "string",
-                                                "example": "Gold IV"
-                                            },
-                                            "rating": {
-                                                "type": "integer",
-                                                "format": "int32",
-                                                "example": 1650
-                                            },
-                                            "rating_deviation": {
-                                                "type": "integer",
-                                                "format": "int32",
-                                                "example": 120
-                                            },
-                                            "rating_volatility": {
-                                                "type": "integer",
-                                                "format": "int32",
-                                                "example": 0.58
-                                            },
-                                            "links": {
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "rel": {
-                                                            "type": "string",
-                                                            "example": "self"
-                                                        },
-                                                        "href": {
-                                                            "type": "string",
-                                                            "example": "/game/users/john-doe"
+                                            }
+                                        },
+                                        "users": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "john-doe"
+                                                    },
+                                                    "rank": {
+                                                        "type": "string",
+                                                        "example": "Gold IV"
+                                                    },
+                                                    "rating": {
+                                                        "type": "integer",
+                                                        "format": "int32",
+                                                        "example": 1650
+                                                    },
+                                                    "rating_deviation": {
+                                                        "type": "integer",
+                                                        "format": "int32",
+                                                        "example": 120
+                                                    },
+                                                    "rating_volatility": {
+                                                        "type": "integer",
+                                                        "format": "int32"
+                                                    },
+                                                    "links": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "rel": {
+                                                                    "type": "string",
+                                                                    "example": "self"
+                                                                },
+                                                                "href": {
+                                                                    "type": "string",
+                                                                    "example": "/game/users/john-doe"
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
                                             }
-                                        }
-                                    }
-                                },
-                                "links": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "rel": {
-                                                "type": "string"
-                                            },
-                                            "href": {
-                                                "type": "string"
+                                        },
+                                        "links": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "rel": {
+                                                        "type": "string"
+                                                    },
+                                                    "href": {
+                                                        "type": "string"
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -773,10 +803,12 @@
                         }
                     },
                     "401": {
-                        "description": "Unauthorized"
+                        "description": "Unauthorized",
+                        "content": {}
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "content": {}
                     }
                 }
             },
@@ -793,25 +825,32 @@
                         "in": "path",
                         "description": "Slug of game",
                         "required": true,
-                        "type": "string"
+                        "schema": {
+                            "type": "string"
+                        }
                     },
                     {
                         "name": "matchId",
                         "in": "path",
                         "description": "the match ID",
                         "required": true,
-                        "type": "integer"
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "resource deleted"
+                        "description": "resource deleted",
+                        "content": {}
                     },
                     "401": {
-                        "description": "Unauthorized"
+                        "description": "Unauthorized",
+                        "content": {}
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "content": {}
                     }
                 }
             }
@@ -827,57 +866,62 @@
                 "responses": {
                     "200": {
                         "description": "Success",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "name": {
-                                                "type": "string",
-                                                "example": "John doe"
-                                            },
-                                            "links": {
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
                                                 "type": "object",
-                                                "example": [
-                                                    {
-                                                        "rel": "self",
-                                                        "href": "/users/john-doe"
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "John doe"
                                                     },
-                                                    {
-                                                        "rel": "games",
-                                                        "href": "/users/john-doe/games"
-                                                    },
-                                                    {
-                                                        "rel": "matches",
-                                                        "href": "/users/john-doe/matches"
+                                                    "links": {
+                                                        "type": "object",
+                                                        "properties": {},
+                                                        "example": [
+                                                            {
+                                                                "rel": "self",
+                                                                "href": "/users/john-doe"
+                                                            },
+                                                            {
+                                                                "rel": "games",
+                                                                "href": "/users/john-doe/games"
+                                                            },
+                                                            {
+                                                                "rel": "matches",
+                                                                "href": "/users/john-doe/matches"
+                                                            }
+                                                        ]
                                                     }
-                                                ]
+                                                }
                                             }
-                                        }
-                                    }
-                                },
-                                "meta": {
-                                    "type": "object",
-                                    "properties": {
-                                        "first_page": {
-                                            "type": "string"
                                         },
-                                        "etc....": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "links": {
-                                    "type": "object",
-                                    "properties": {
-                                        "first_page": {
-                                            "type": "string"
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "first_page": {
+                                                    "type": "string"
+                                                },
+                                                "etc....": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         },
-                                        "etc....": {
-                                            "type": "string"
+                                        "links": {
+                                            "type": "object",
+                                            "properties": {
+                                                "first_page": {
+                                                    "type": "string"
+                                                },
+                                                "etc....": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -885,10 +929,12 @@
                         }
                     },
                     "401": {
-                        "description": "Unauthorized"
+                        "description": "Unauthorized",
+                        "content": {}
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "content": {}
                     }
                 }
             }
@@ -899,7 +945,6 @@
                     "user"
                 ],
                 "summary": "Get user by user name",
-                "description": "",
                 "operationId": "getUserByName",
                 "parameters": [
                     {
@@ -907,21 +952,29 @@
                         "in": "path",
                         "description": "Slug of the username that needs to be fetched(ex: John-doe)",
                         "required": true,
-                        "type": "string"
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "successful operation",
-                        "schema": {
-                            "$ref": "#/definitions/User"
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
                         }
                     },
                     "400": {
-                        "description": "Invalid username supplied"
+                        "description": "Invalid username supplied",
+                        "content": {}
                     },
                     "404": {
-                        "description": "User not found"
+                        "description": "User not found",
+                        "content": {}
                     }
                 }
             },
@@ -938,18 +991,23 @@
                         "in": "path",
                         "description": "Slug of user",
                         "required": true,
-                        "type": "string"
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "resource deleted"
+                        "description": "resource deleted",
+                        "content": {}
                     },
                     "401": {
-                        "description": "Unauthorized"
+                        "description": "Unauthorized",
+                        "content": {}
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "content": {}
                     }
                 }
             }
@@ -968,77 +1026,82 @@
                         "in": "path",
                         "description": "Slug of user",
                         "required": true,
-                        "type": "string"
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "name": {
-                                                "type": "string",
-                                                "example": "League of legends"
-                                            },
-                                            "rank": {
-                                                "type": "string",
-                                                "example": "Gold IV"
-                                            },
-                                            "rating": {
-                                                "type": "integer",
-                                                "format": "int32",
-                                                "example": 1600
-                                            },
-                                            "rating_deviation": {
-                                                "type": "integer",
-                                                "format": "int32",
-                                                "example": 120
-                                            },
-                                            "rating_volatility": {
-                                                "type": "integer",
-                                                "format": "int32",
-                                                "example": 0.59123123
-                                            },
-                                            "links": {
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "rel": {
-                                                            "type": "string",
-                                                            "example": "/games/league-of-legends"
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "League of legends"
+                                                    },
+                                                    "rank": {
+                                                        "type": "string",
+                                                        "example": "Gold IV"
+                                                    },
+                                                    "rating": {
+                                                        "type": "integer",
+                                                        "format": "int32",
+                                                        "example": 1600
+                                                    },
+                                                    "rating_deviation": {
+                                                        "type": "integer",
+                                                        "format": "int32",
+                                                        "example": 120
+                                                    },
+                                                    "rating_volatility": {
+                                                        "type": "integer",
+                                                        "format": "int32"
+                                                    },
+                                                    "links": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "rel": {
+                                                                    "type": "string",
+                                                                    "example": "/games/league-of-legends"
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
                                             }
-                                        }
-                                    }
-                                },
-                                "meta": {
-                                    "type": "object",
-                                    "properties": {
-                                        "first_page": {
-                                            "type": "string"
                                         },
-                                        "etc....": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "links": {
-                                    "type": "object",
-                                    "properties": {
-                                        "first_page": {
-                                            "type": "string"
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "first_page": {
+                                                    "type": "string"
+                                                },
+                                                "etc....": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         },
-                                        "etc....": {
-                                            "type": "string"
+                                        "links": {
+                                            "type": "object",
+                                            "properties": {
+                                                "first_page": {
+                                                    "type": "string"
+                                                },
+                                                "etc....": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -1046,10 +1109,12 @@
                         }
                     },
                     "401": {
-                        "description": "Unauthorized"
+                        "description": "Unauthorized",
+                        "content": {}
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "content": {}
                     }
                 }
             }
@@ -1068,70 +1133,76 @@
                         "in": "path",
                         "description": "Slug of user",
                         "required": true,
-                        "type": "string"
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "successful operation",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "game": {
-                                                "type": "string",
-                                                "example": "League-of-legends"
-                                            },
-                                            "team": {
-                                                "type": "integer",
-                                                "format": "int32"
-                                            },
-                                            "result": {
-                                                "type": "integer",
-                                                "format": "int32"
-                                            },
-                                            "links": {
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "rel": {
-                                                            "type": "string",
-                                                            "example": "self"
-                                                        },
-                                                        "href": {
-                                                            "type": "string",
-                                                            "example": "/games/league-of-legends/matches/1"
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "game": {
+                                                        "type": "string",
+                                                        "example": "League-of-legends"
+                                                    },
+                                                    "team": {
+                                                        "type": "integer",
+                                                        "format": "int32"
+                                                    },
+                                                    "result": {
+                                                        "type": "integer",
+                                                        "format": "int32"
+                                                    },
+                                                    "links": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "rel": {
+                                                                    "type": "string",
+                                                                    "example": "self"
+                                                                },
+                                                                "href": {
+                                                                    "type": "string",
+                                                                    "example": "/games/league-of-legends/matches/1"
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
                                             }
-                                        }
-                                    }
-                                },
-                                "meta": {
-                                    "type": "object",
-                                    "properties": {
-                                        "first_page": {
-                                            "type": "string"
                                         },
-                                        "etc....": {
-                                            "type": "string"
-                                        }
-                                    }
-                                },
-                                "links": {
-                                    "type": "object",
-                                    "properties": {
-                                        "first_page": {
-                                            "type": "string"
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "first_page": {
+                                                    "type": "string"
+                                                },
+                                                "etc....": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         },
-                                        "etc....": {
-                                            "type": "string"
+                                        "links": {
+                                            "type": "object",
+                                            "properties": {
+                                                "first_page": {
+                                                    "type": "string"
+                                                },
+                                                "etc....": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -1139,120 +1210,128 @@
                         }
                     },
                     "401": {
-                        "description": "Unauthorized"
+                        "description": "Unauthorized",
+                        "content": {}
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "content": {}
                     }
                 }
             }
         }
     },
-    "definitions": {
-        "Match": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "team_length": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "users": {
-                    "type": "array",
-                    "items": {
-                        "type": "object"
-                    }
-                },
-                "game": {
-                    "type": "object",
-                    "properties": {
-                        "data": {
-                            "type": "object"
-                        },
-                        "links": {
-                            "type": "object"
-                        }
-                    }
-                },
-                "links": {
-                    "type": "array",
-                    "items": {
-                        "type": "object"
-                    }
-                }
-            }
-        },
-        "teams": {
-            "type": "array",
-            "items": {
+    "components": {
+        "schemas": {
+            "Match": {
                 "type": "object",
                 "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "team_length": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "users": {
                         "type": "array",
-                        "example": [
-                            "player-1",
-                            "player-2"
-                        ],
                         "items": {
-                            "type": "string"
+                            "type": "object",
+                            "properties": {}
                         }
                     },
-                    "result": {
-                        "type": "integer",
-                        "format": "int32",
-                        "example": 1
-                    }
-                }
-            }
-        },
-        "User": {
-            "type": "object",
-            "properties": {
-                "name": {
-                    "type": "string"
-                },
-                "links": {
-                    "type": "array",
-                    "example": [
-                        {
-                            "rel": "self",
-                            "href": "/users/john-doe"
-                        },
-                        {
-                            "rel": "games",
-                            "href": "/users/john-doe/games"
-                        },
-                        {
-                            "rel": "matches",
-                            "href": "/users/john-doe/matches"
-                        }
-                    ],
-                    "items": {
+                    "game": {
                         "type": "object",
                         "properties": {
-                            "rel": {
-                                "type": "string"
+                            "data": {
+                                "type": "object",
+                                "properties": {}
                             },
-                            "href": {
+                            "links": {
+                                "type": "object",
+                                "properties": {}
+                            }
+                        }
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {}
+                        }
+                    }
+                }
+            },
+            "teams": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "users": {
+                            "type": "array",
+                            "example": [
+                                "player-1",
+                                "player-2"
+                            ],
+                            "items": {
                                 "type": "string"
+                            }
+                        },
+                        "result": {
+                            "type": "integer",
+                            "format": "int32",
+                            "example": 1
+                        }
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "links": {
+                        "type": "array",
+                        "example": [
+                            {
+                                "rel": "self",
+                                "href": "/users/john-doe"
+                            },
+                            {
+                                "rel": "games",
+                                "href": "/users/john-doe/games"
+                            },
+                            {
+                                "rel": "matches",
+                                "href": "/users/john-doe/matches"
+                            }
+                        ],
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "rel": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }
                             }
                         }
                     }
                 }
-            }
-        },
-        "Game": {
-            "type": "object",
-            "required": [
-                "name"
-            ],
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "example": "Pubg"
+            },
+            "Game": {
+                "required": [
+                    "name"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "Pubg"
+                    }
                 }
             }
         }

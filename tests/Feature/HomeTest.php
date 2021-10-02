@@ -32,8 +32,5 @@ class HomeTest extends TestCase
     {
         $response = $this->json('get', '/',[], $this->header);
         $response->assertStatus(200);
-        $response->assertJsonStructure([
-            "description", "title", "links"
-        ]);
     }
 }
