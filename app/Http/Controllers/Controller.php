@@ -18,16 +18,15 @@ class Controller extends BaseController
         if (!request()->bearerToken()) {
             return response("Authenticate with a token please", 401);
         }
-        // Get the Access_Token from the request
-        $Token = request()->bearerToken();
-        // Parse the Access_Token to get the claims from them the jti(Json Token Id)
-        $TokenId = (new Parser(new JoseEncoder()))->parse($Token)->claims()
-            ->all()['jti'];
         try {
+            // Get the Access_Token from the request
+            $Token = request()->bearerToken();
+            // Parse the Access_Token to get the claims from them the jti(Json Token ID)
+            $TokenId = (new Parser(new JoseEncoder()))->parse($Token)->claims()
+                ->all()['jti'];
             $this->client = Token::findOrFail($TokenId)->client;
         } catch (\Exception $e) {
             return response("Invalid Access Token", 401);
         }
-
     }
 }

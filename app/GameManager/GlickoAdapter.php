@@ -14,8 +14,8 @@ class GlickoAdapter
         $i = 0;
         $users = [];
         $teamResults = [];
-        foreach ($results as $teamIndex => $teamValues) {
-            $users[$i] = $match->users()->wherePivot("team", $teamIndex)->get();
+        foreach ($results as $team) {
+            $users[$i] = $match->users()->wherePivot("team", $i)->get();
             $teamsAverage[$i] = $users[$i]->map(function ($user) {
                 return new Rating(
                     $user->pivot->rating,
@@ -24,7 +24,7 @@ class GlickoAdapter
                 );
             });
             $i++;
-            $teamResults[] = $teamValues["result"];
+            $teamResults[] = $team["result"];
         }
         $ratings = Glicko::match(
             $teamsAverage[0]->toArray(),
@@ -32,6 +32,7 @@ class GlickoAdapter
             $teamResults[0],
             $teamResults[1]
         );
+
         for ($i = 0; $i < 2; $i++) {
             for ($v = 0; $v < $users[$i]->count(); $v++) {
                 $users[$i][$v]->games()->updateExistingPivot($game, [

@@ -23,7 +23,7 @@ class Game extends Model
 
     public function matches()
     {
-        return $this->hasMany(MatchUp::class)->where('state', '<>', 'deleted');
+        return $this->hasMany(MatchUp::class);
     }
 
     public function client()
