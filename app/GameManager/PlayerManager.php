@@ -18,7 +18,7 @@ class PlayerManager
                 $game->users()->syncWithoutDetaching([$user->id]);
                 $match->users()->attach($user, [
                     'team' => $index,
-                    'result' => (int)$team['result'],
+                    'result' => $team['result'],
                     'rating' => $user->games()->find($game)->pivot->rating,
                     'rating_deviation' => $user->games()->find($game)->pivot->rating_deviation,
                     'rating_volatility' => $user->games()->find($game)->pivot->rating_volatility

@@ -32,7 +32,6 @@ class GlickoAdapter
             $teamResults[0],
             $teamResults[1]
         );
-
         for ($i = 0; $i < 2; $i++) {
             for ($v = 0; $v < $users[$i]->count(); $v++) {
                 $users[$i][$v]->games()->updateExistingPivot($game, [

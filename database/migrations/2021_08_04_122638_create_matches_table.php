@@ -27,7 +27,7 @@ class CreateMatchesTable extends Migration
             $table->float('rating',6,2)->default(1500);
             $table->float('rating_deviation',5,2)->default(350);
             $table->decimal('rating_volatility',9,8)->default(0.06);
-            $table->tinyInteger('result')->nullable();
+            $table->decimal('result',2,1)->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->foreign('match_id')->references('id')->on('matches')->onDelete('cascade');
             $table->timestamps();

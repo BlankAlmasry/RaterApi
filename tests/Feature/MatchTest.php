@@ -187,6 +187,24 @@ class MatchTest extends TestCase
         $this->assertEquals($winner->games()->find($this->game)->pivot->rating_volatility, round(0.059999350751962, 8));
     }
 
+    /** @test */
+    public function A_draw_to_2_new_players_wont_change_rating()
+    {
+        $response = $this->json('post',
+            "/games/{$this->game->slug}/matches",
+            [
+                'teams' => [
+                    ["users" => ["test1"], "result" => 0.5],
+                    ["users" => ["test2"], "result" => 0.5],
+                ]
+            ],
+            $this->header
+        );
+        $drawer = Game::find($this->game)->first()->users()->where('name', "test1")->first();
+        $response->assertStatus(201);
+        $this->assertEquals($drawer->games()->find($this->game)->pivot->rating, round(1500, 2));
+    }
+
     public function test_delete_a_match()
     {
         $match = MatchUp::factory()->create();
