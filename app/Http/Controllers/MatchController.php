@@ -16,6 +16,7 @@ class MatchController extends Controller
         $game = $this->getGame($game);
         $match = MatchUp::create([
             'game_id' => $game->id,
+            'team_length' => count($request['teams'][0]['users']) #team1 length is same as #team2,
         ]);
         PlayerManager::addPlayersToMatch($game, $match, $request->teams, $this->client->id);
         GlickoAdapter::updateResults($game, $match, $request->teams);

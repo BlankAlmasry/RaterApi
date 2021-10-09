@@ -9,7 +9,7 @@ class MatchUp extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['game_id'];
+    protected $fillable = ['game_id',"team_length"];
 
     protected $with = ['game','users'];
 
