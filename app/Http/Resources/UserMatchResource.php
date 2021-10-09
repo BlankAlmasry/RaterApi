@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Glicko\Glicko;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserMatchResource extends JsonResource
@@ -16,8 +17,10 @@ class UserMatchResource extends JsonResource
     {
         return [
             "name" => $this->name,
-            "team" => $this->pivot->team,
-            "result" => $this->pivot->result,
+            "rank" => Glicko::ratingToRank($this->pivot->rating),
+            "rating" => $this->pivot->rating,
+            "rating_deviation" => $this->pivot->rating_deviation,
+            "rating_volatility" => $this->pivot->rating_volatility,
         ];
     }
 }

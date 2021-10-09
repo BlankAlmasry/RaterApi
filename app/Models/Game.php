@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Passport\Client;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+
 class Game extends Model
 {
     use HasFactory;
@@ -18,7 +19,7 @@ class Game extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->withPivot('rating','rating_deviation','rating_volatility')->withTimestamps();
+        return $this->belongsToMany(User::class)->withPivot('rating', 'rating_deviation', 'rating_volatility')->withTimestamps();
     }
 
     public function matches()
@@ -31,12 +32,19 @@ class Game extends Model
         return $this->belongsTo(Client::class);
     }
 
-    public function getSlugOptions() : SlugOptions
+    public function matchUsers()
+    {
+        return $this->hasManyThrough(User::class, MatchUp::class);
+    }
+
+
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
     }
+
     public function getRouteKeyName()
     {
         return 'slug';

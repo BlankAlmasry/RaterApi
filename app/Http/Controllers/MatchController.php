@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\GameManager\GlickoAdapter;
 use App\GameManager\PlayerManager;
 use App\Http\Requests\StoreMatchRequest;
 use App\Http\Resources\MatchResource;
@@ -18,8 +17,7 @@ class MatchController extends Controller
             'game_id' => $game->id,
             'team_length' => count($request['teams'][0]['users']) #team1 length is same as #team2,
         ]);
-        PlayerManager::addPlayersToMatch($game, $match, $request->teams, $this->client->id);
-        GlickoAdapter::updateResults($game, $match, $request->teams);
+        PlayerManager::insertUserWithNewRating($game, $match, $request->teams, $this->client->id);
         return response(new MatchResource($match->loadMissing('game')), 201);
     }
 
