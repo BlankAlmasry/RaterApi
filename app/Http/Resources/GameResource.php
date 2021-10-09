@@ -3,13 +3,13 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Carbon\Carbon;
+
 class GameResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function toArray($request)
@@ -20,15 +20,15 @@ class GameResource extends JsonResource
             'links' => [
                 [
                     'rel' => 'self',
-                    'href' => '/api/games/' .$this->slug,
+                    'href' => '/games/' . $this->slug,
                 ],
                 [
                     'rel' => 'matches',
-                    'href' => '/api/games/' .$this->slug. '/matches',
+                    'href' => '/games/' . $this->slug . '/matches',
                 ],
                 [
                     'rel' => 'users',
-                    'href' => '/api/games/'. $this->slug. '/users',
+                    'href' => '/games/' . $this->slug . '/users',
                 ],
             ]
         ];

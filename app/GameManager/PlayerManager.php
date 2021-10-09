@@ -2,12 +2,11 @@
 
 namespace App\GameManager;
 
-use App\Http\Controllers\MatchController;
 use App\Models\User;
 
 class PlayerManager
 {
-   public static function addPlayersToMatch($game, $match, $teams, $clientId)
+    public static function addPlayersToMatch($game, $match, $teams, $clientId)
     {
         foreach ($teams as $index => $team) {
             foreach ($team['users'] as $user) {

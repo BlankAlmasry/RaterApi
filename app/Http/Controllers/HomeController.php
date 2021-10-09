@@ -9,7 +9,7 @@ class HomeController extends Controller
     {
         return response(["message" => "Invalid or no api token, authorize with a valid api please" , "links" => [
             "rel" => "login",
-            "href" => "/api/login",
+            "href" => "/login",
             "method" => "post",
             "values" => [
                 "grant_type", "client_id", "client_secret"

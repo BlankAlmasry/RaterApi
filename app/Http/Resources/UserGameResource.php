@@ -10,7 +10,7 @@ class UserGameResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function toArray($request)
@@ -24,7 +24,7 @@ class UserGameResource extends JsonResource
             'links' => [
                 [
                     'rel' => 'self',
-                    'href' => '/api/users/' .$this->slug,
+                    'href' => '/users/' . $this->slug,
                 ],
             ]
         ];

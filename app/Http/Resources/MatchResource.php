@@ -9,7 +9,7 @@ class MatchResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function toArray($request)
@@ -22,11 +22,11 @@ class MatchResource extends JsonResource
             'links' => [
                 [
                     'rel' => 'self',
-                    'href' => "/api/games/" .$this->game->slug. "/matches/$this->id",
+                    'href' => "/games/" . $this->game->slug . "/matches/$this->id",
                 ],
                 [
                     'rel' => 'game',
-                    'href' => '/api/games/' .$this->game->slug,
+                    'href' => '/games/' . $this->game->slug,
                 ],
             ],
 

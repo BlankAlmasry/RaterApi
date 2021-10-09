@@ -21,11 +21,11 @@ class MatchUserResource extends JsonResource
             "links" => [
                 [
                     "rel" => "self",
-                    "href" => "/api/games/{$this->game->slug}/matches/{$this->id}"
+                    "href" => "/games/{$this->game->slug}/matches/{$this->id}"
                 ],
                 [
                     "rel" => "game",
-                    "href" => "/api/games/{$this->game->slug}"
+                    "href" => "/games/{$this->game->slug}"
                 ]
             ]
         ];
