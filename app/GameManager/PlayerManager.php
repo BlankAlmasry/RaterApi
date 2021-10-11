@@ -45,7 +45,7 @@ class PlayerManager
 
         for ($i = 0; $i < 2; $i++) {
             for ($v = 0; $v < $users[$i]->count(); $v++) {
-                $match->users()->attach($user, [
+                $match->users()->attach($users[$i][$v], [
                     'team' => $index,
                     'result' => $team['result'],
                     "rating" => round($ratings[$i][$v][0], 2),

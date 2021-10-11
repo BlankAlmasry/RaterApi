@@ -2,7 +2,7 @@
     "openapi": "3.0.1",
     "info": {
         "title": "RaterApi",
-        "description": "Rating API, uses Glicko2 rating algorithim. feel free to contact me for a permenant api token <br><b>Public Bearer token</b>:",
+        "description": "Rating API, uses Glicko2 rating algorithim. feel free to contact me for a permenant api token <br><b>Public Bearer token</b>:<small>eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiMTM0OGRhYTAyM2MwMTc4NGRlNzUxZWM3NmU2ODg5NmE0NzViMTYyMWIwNTkwZjI0ODgwNWVlZWY2NmU3NmI5NmFmN2E3YjUxMTRkNDQyMDIiLCJpYXQiOjE2MzM3ODg4NTQuMjUzMjksIm5iZiI6MTYzMzc4ODg1NC4yNTMyOTUsImV4cCI6MTY2NTMyNDg1My43MTY2MTUsInN1YiI6IiIsInNjb3BlcyI6W119.dJBtK1w2iihpFvsmJdRrx5iCSu4nIjT7i8xX8UjiunoXkhjVmL0A9BhraNRf-P-P9Z-D2hCWmbAJPawQglj1LbbdgWlwzMsL_ZZOZ1an5Soq1YOPALLFgMXH0y7u4X0TCLSQFXZmNo98Di4a7ZMcGJ2yvY308OAcQJsVehwnRsHo_bjRNwz5evcCr68kf3ipx-fAQaY9UGMaumHFP43UhRS0RKPEeQ3b0UlLFq1VrIp_rO5wMOFXyVy1TAbCL-6S1iKFn8agNk0BNeDrZtsD_aPaQl8egsR_wId3MnYTUHIMy7Uwe5Jc3_tZoroPwR7HOLx61mU9OQ0MbF7CLnWqVT9btg-V05pv-4DT_5qPkfU7rfORG5JRnnH886GPpMkt34RSIkz9DQV03LhEVJnI94wgaHNQ7HMHBmlPBCRGXeEKR_u96nyHVLpOxyZ5rU6OgdSMLhLeeVjIFkak_WlOSdn9w14aFr81iuy8V11HjZIHub9a2EwO_XDORUeaxpM_mg4XXEpGsI88rAo0H_B3kIGOOsP5tXsK4M-XVypJuuY4SEkFY8rjx0u93vvc_E8vYRVLatE8AWaeP1qpADWEVxOGIKMwWkIFlSOuSdMV1_JVDI4SiooG6E-5IOXoRyX_q87ZjixutLw4sWjPYD2BaIKP1A-moq2-cL5Hc9KmSA8</small>",
         "contact": {
             "email": "Blankhussien@gmail.com"
         },
