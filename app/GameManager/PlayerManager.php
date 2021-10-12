@@ -47,17 +47,26 @@ class PlayerManager
             for ($v = 0; $v < $users[$i]->count(); $v++) {
                 $match->users()->attach($users[$i][$v], [
                     'team' => $index,
-                    'result' => $team['result'],
+                    'result' => $teamsAdapter[$i]["result"],
                     "rating" => round($ratings[$i][$v][0], 2),
                     "rating_deviation" => round($ratings[$i][$v][1], 2),
                     "rating_volatility" => round($ratings[$i][$v][2], 8)
                 ]);
-                $users[$i][$v]->games()->updateExistingPivot($game, [
+                $users[$i][$v]->games()->updateExistingPivot($game, self::updateGamesPivotTable([
                     "rating" => round($ratings[$i][$v][0], 2),
                     "rating_deviation" => round($ratings[$i][$v][1], 2),
-                    "rating_volatility" => round($ratings[$i][$v][2], 8)
-                ]);
+                    "rating_volatility" => round($ratings[$i][$v][2], 8),
+                ], $teamsAdapter[$i]["result"],$users[$i][$v]->games()->find($game)));
             }
         }
     }
+
+    private static function updateGamesPivotTable(array $data, $result, $user)
+    {
+        return array_merge(
+            $data,
+            $result ? array("wins" => $user->pivot->wins += 1) :  array("loses" => $user->pivot->loses += 1)
+        );
+    }
+
 }

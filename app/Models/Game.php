@@ -19,7 +19,9 @@ class Game extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->withPivot('rating', 'rating_deviation', 'rating_volatility')->withTimestamps();
+        return $this->belongsToMany(User::class)
+            ->withPivot('rating', 'rating_deviation', 'rating_volatility', 'wins', 'loses')
+            ->withTimestamps();
     }
 
     public function matches()

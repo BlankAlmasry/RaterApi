@@ -17,7 +17,7 @@ class User extends Authenticatable
 
     public function games()
     {
-        return $this->belongsToMany(Game::class)->withPivot('rating', 'rating_deviation', 'rating_volatility')->withTimestamps();
+        return $this->belongsToMany(Game::class)->withPivot('rating', 'rating_deviation', 'rating_volatility', 'wins', 'loses')->withTimestamps();
     }
 
     public function matches()

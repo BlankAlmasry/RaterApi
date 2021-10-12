@@ -6,7 +6,6 @@ use App\Glicko\Glicko;
 use App\Models\Game;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Str;
 use Laravel\Passport\Client;
 use Tests\TestCase;
@@ -15,7 +14,7 @@ class UserTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function setUp():void
+    public function setUp(): void
     {
         parent::setUp();
         $this->client = Client::factory()->create();
@@ -25,10 +24,10 @@ class UserTest extends TestCase
             'client_id' => $this->client->getKey(),
             'client_secret' => $this->client->secret,
         ]);
-        $this->header =  ['Authorization' => 'Bearer '.$response->json()["access_token"]];
+        $this->header = ['Authorization' => 'Bearer ' . $response->json()["access_token"]];
 
-        $this->game = Game::factory()->create(["client_id"=>$this->client->id]);
-        $this->user = User::factory()->create(["client_id"=>$this->client->id]);
+        $this->game = Game::factory()->create(["client_id" => $this->client->id]);
+        $this->user = User::factory()->create(["client_id" => $this->client->id]);
         $this->game->users()->attach($this->user);
     }
 
@@ -41,7 +40,7 @@ class UserTest extends TestCase
             $this->header
         );
         $response->assertJsonStructure([
-           "data","links","meta"
+            "data", "links", "meta"
         ]);
 
         $response->assertStatus(200);
@@ -59,7 +58,7 @@ class UserTest extends TestCase
         $response->assertStatus(401);
     }
 
-    public function test_get_a_single_user()
+    public function test_get_single_user()
     {
         $response = $this->json(
             'get',
@@ -68,10 +67,11 @@ class UserTest extends TestCase
             $this->header
         );
         $response->assertJsonFragment([
-                "name" => $this->user->name,
-                "rating" => $this->user->games()->first()->pivot->rating,
-
-           ]);
+            "name" => $this->user->name,
+            "rating" => $this->user->games()->first()->pivot->rating,
+            "wins" => "0",
+            "loses" => "0"
+        ]);
 
         $response->assertStatus(200);
     }
@@ -88,8 +88,8 @@ class UserTest extends TestCase
         $response->assertStatus(200);
         $response->assertJsonStructure([
             [
-            "name", "links"
-             ]
+                "name", "links"
+            ]
         ]);
     }
 
@@ -103,14 +103,14 @@ class UserTest extends TestCase
         );
         $response->assertStatus(200);
         $response->assertJsonStructure([
-                "name", "links"
+            "name", "links"
         ]);
     }
 
     public function test_return_numeric_to_tier()
     {
         $rating = Glicko::ratingToRank(2759);
-        $this->assertEquals($rating,["rank" => "Master", "points" => 159]);
+        $this->assertEquals($rating, ["rank" => "Master", "points" => 159]);
     }
 
     public function test_an_Api_can_get_user_games()
@@ -145,7 +145,7 @@ class UserTest extends TestCase
     public function User_must_have_a_client()
     {
         $user = User::factory()->create();
-        self::assertInstanceOf(Client::class ,$user->client);
+        self::assertInstanceOf(Client::class, $user->client);
     }
 
     /** @test */
@@ -160,17 +160,17 @@ class UserTest extends TestCase
         $response->assertStatus(200);
         $this->assertDatabaseCount(User::class, 0);
     }
+
     /** @test */
     public function fetching_non_existing_user_will_result_in_error()
     {
         $response = $this->json(
             'get',
-            "/users/".Str::random(12),
+            "/users/" . Str::random(12),
             [],
             $this->header
         );
         $response->assertStatus(404);
     }
-
 
 }

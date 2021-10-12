@@ -234,6 +234,27 @@ class MatchTest extends TestCase
 
     }
 
+    /** @test */
+    public function a_user_win_get_incremented_every_time_he_win()
+    {
+        $this->json('post',
+            "/games/{$this->game->slug}/matches",
+            $this->validFields(),
+            $this->header
+        );
+        $user = User::where('name',"test1")->first();
+        $this->assertEquals($user->games()->first()->pivot->wins, 1);
+
+        $this->json('post',
+            "/games/{$this->game->slug}/matches",
+            $this->validFields(),
+            $this->header
+        );
+        $user = User::where('name',"test1")->first();
+        $this->assertEquals($user->games()->first()->pivot->wins, 2);
+
+    }
+
     protected function validFields($attrs = [])
     {
         return array_merge([
@@ -243,5 +264,6 @@ class MatchTest extends TestCase
             ]
         ], $attrs);
     }
+
 
 }

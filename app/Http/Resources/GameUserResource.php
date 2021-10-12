@@ -21,6 +21,8 @@ class GameUserResource extends JsonResource
             "rating" => $this->pivot->rating,
             "rating_deviation" => $this->pivot->rating_deviation,
             "rating_volatility" => $this->pivot->rating_volatility,
+            "wins" => $this->pivot->wins,
+            "loses" => $this->pivot->loses,
             'links' => [
                 [
                     'rel' => 'self',
