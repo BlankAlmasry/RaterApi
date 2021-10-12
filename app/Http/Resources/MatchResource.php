@@ -18,7 +18,6 @@ class MatchResource extends JsonResource
             'id' => $this->id,
             'team_length' => $this->team_length,
             'users' => UserMatchResource::collection($this->users()->get()),
-            'game' => new GameResource($this->game),
             'links' => [
                 [
                     'rel' => 'self',

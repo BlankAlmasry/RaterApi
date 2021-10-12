@@ -25,7 +25,7 @@ class MatchController extends Controller
     {
         $game = $this->getGame($game);
         $matches = $game->matches();
-        return MatchResource::collection($matches->paginate(10))
+        return MatchResource::collection($matches->latest()->paginate(10))
             ->response()
             ->setStatusCode(200);
     }

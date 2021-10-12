@@ -37,7 +37,7 @@ class MatchTest extends TestCase
         );
         $response->assertStatus(201);
         $response->assertJsonStructure([
-            "id", "game", "users", "links"
+            "id", "users", "links"
         ]);
 
         $this->assertDatabaseCount('matches', 1);
@@ -87,7 +87,6 @@ class MatchTest extends TestCase
         );
         $response->assertJsonStructure([
             "id",
-            "game",
             "users",
             "links"
         ]);

@@ -18,6 +18,7 @@ class UserMatchResource extends JsonResource
         return [
             "name" => $this->name,
             "rank" => Glicko::ratingToRank($this->pivot->rating),
+            "result" => floatval($this->pivot->result),
             "rating" => $this->pivot->rating,
             "rating_deviation" => $this->pivot->rating_deviation,
             "rating_volatility" => $this->pivot->rating_volatility,
