@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Glicko\Glicko;
+use App\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class GameUserResource extends JsonResource
