@@ -6,7 +6,7 @@
         "contact": {
             "email": "Blankhussien@gmail.com"
         },
-        "version": "0.1.0"
+        "version": "1.0.0-alpha"
     },
     "tags": [
         {
@@ -35,7 +35,7 @@
                     "200": {
                         "description": "Success",
                         "content": {
-                            "application/json": {
+                            "*/*": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -112,7 +112,7 @@
                 "requestBody": {
                     "description": "Game details",
                     "content": {
-                        "application/json": {
+                        "*/*": {
                             "schema": {
                                 "$ref": "#/components/schemas/Game"
                             }
@@ -160,7 +160,7 @@
                     "200": {
                         "description": "Success",
                         "content": {
-                            "application/json": {
+                            "*/*": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -245,7 +245,7 @@
                 "requestBody": {
                     "description": "Game details",
                     "content": {
-                        "application/json": {
+                        "*/*": {
                             "schema": {
                                 "$ref": "#/components/schemas/Game"
                             }
@@ -274,6 +274,245 @@
                 "x-codegen-request-body-name": "body"
             }
         },
+        "/games/{gameSlug}/ranking": {
+            "get": {
+                "tags": [
+                    "game"
+                ],
+                "summary": "Get Leaderboard of the players rating in desc order",
+                "description": "Returns leaderboard of the players according to their rating, it takes only lower than 100 rating deviation by default, feel free to customize it in query parameter",
+                "operationId": "getGameRanking",
+                "parameters": [
+                    {
+                        "name": "gameSlug",
+                        "in": "path",
+                        "description": "Slug of game to return",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "maxRatingDeviation",
+                        "in": "query",
+                        "description": "Max rating deviation allowed, possible values between 50 and 350, 100 by default",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "blank"
+                                                    },
+                                                    "rating": {
+                                                        "type": "number",
+                                                        "example": 3200.32
+                                                    },
+                                                    "rank": {
+                                                        "type": "object",
+                                                        "example": [
+                                                            "rank:Challenger",
+                                                            "points:600.32"
+                                                        ],
+                                                        "properties": {
+                                                            "rank": {
+                                                                "type": "string"
+                                                            },
+                                                            "points": {
+                                                                "type": "number"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "links": {
+                                            "type": "object",
+                                            "properties": {
+                                                "first": {
+                                                    "type": "string",
+                                                    "example": "http://localhost:8000/games/622119167553699860/ranking?page=1"
+                                                },
+                                                "last": {
+                                                    "type": "string",
+                                                    "example": "http://localhost:8000/games/622119167553699860/ranking?page=1"
+                                                },
+                                                "prev": {
+                                                    "type": "string",
+                                                    "format": "nullable",
+                                                    "example": null
+                                                },
+                                                "next": {
+                                                    "type": "string",
+                                                    "format": "nullable",
+                                                    "example": null
+                                                }
+                                            }
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "current_page": {
+                                                    "type": "integer",
+                                                    "format": "int32"
+                                                },
+                                                "from": {
+                                                    "type": "integer",
+                                                    "format": "int32"
+                                                },
+                                                "last_page": {
+                                                    "type": "integer",
+                                                    "format": "int32"
+                                                },
+                                                "links": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "url": {
+                                                                "type": "string",
+                                                                "format": "nullable",
+                                                                "example": "http://localhost:8000/games/622119167553699860/ranking?page=1"
+                                                            },
+                                                            "label": {
+                                                                "type": "string",
+                                                                "example": "1"
+                                                            },
+                                                            "active": {
+                                                                "type": "boolean",
+                                                                "example": true
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "path": {
+                                                    "type": "string",
+                                                    "example": "http://localhost:8000/games/622119167553699860/ranking"
+                                                },
+                                                "per_page": {
+                                                    "type": "integer",
+                                                    "format": "int32",
+                                                    "example": 10
+                                                },
+                                                "to": {
+                                                    "type": "integer",
+                                                    "format": "int32",
+                                                    "example": 10
+                                                },
+                                                "total": {
+                                                    "type": "integer",
+                                                    "format": "int32",
+                                                    "example": 10
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthroized",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/games/{gameSlug}/ranking/{userSlug}": {
+            "get": {
+                "tags": [
+                    "game"
+                ],
+                "summary": "Get a player ranking a certain game based on rating",
+                "description": "Returns a rank of a single player over a game",
+                "operationId": "getUserRanking",
+                "parameters": [
+                    {
+                        "name": "gameSlug",
+                        "in": "path",
+                        "description": "Slug of game to return",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "the user slug, you can send id or anything and it would deal with it like a slug, it will return null on rank if user doesnt met the coniditions",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "maxRatingDeviation",
+                        "in": "query",
+                        "description": "Max rating deviation allowed, possible values between 50 and 350, 100 by default",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "rank": {
+                                            "type": "object",
+                                            "properties": {
+                                                "rank": {
+                                                    "type": "integer",
+                                                    "format": "int32",
+                                                    "example": 3
+                                                },
+                                                "all": {
+                                                    "type": "integer",
+                                                    "format": "int32",
+                                                    "example": 32
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthroized",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {}
+                    }
+                }
+            }
+        },
         "/games/{gameSlug}/users": {
             "get": {
                 "tags": [
@@ -297,7 +536,7 @@
                     "200": {
                         "description": "Success",
                         "content": {
-                            "application/json": {
+                            "*/*": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -327,6 +566,16 @@
                                                     "rating_volatility": {
                                                         "type": "integer",
                                                         "format": "int32"
+                                                    },
+                                                    "wins": {
+                                                        "type": "integer",
+                                                        "format": "int32",
+                                                        "example": 32
+                                                    },
+                                                    "loses": {
+                                                        "type": "integer",
+                                                        "format": "int32",
+                                                        "example": 27
                                                     },
                                                     "links": {
                                                         "type": "array",
@@ -415,7 +664,7 @@
                     "201": {
                         "description": "Success",
                         "content": {
-                            "application/json": {
+                            "*/*": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -439,7 +688,18 @@
                                         },
                                         "rating_volatility": {
                                             "type": "integer",
-                                            "format": "int32"
+                                            "format": "int32",
+                                            "example": 0.59124512
+                                        },
+                                        "wins": {
+                                            "type": "integer",
+                                            "format": "int32",
+                                            "example": 32
+                                        },
+                                        "loses": {
+                                            "type": "integer",
+                                            "format": "int32",
+                                            "example": 27
                                         },
                                         "links": {
                                             "type": "array",
@@ -500,7 +760,7 @@
                     "200": {
                         "description": "successful operation",
                         "content": {
-                            "application/json": {
+                            "*/*": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -546,6 +806,11 @@
                                                                 "rank": {
                                                                     "type": "string",
                                                                     "example": "Gold IV"
+                                                                },
+                                                                "result": {
+                                                                    "type": "integer",
+                                                                    "format": "int32",
+                                                                    "example": 1
                                                                 },
                                                                 "rating": {
                                                                     "type": "integer",
@@ -647,7 +912,7 @@
                 "requestBody": {
                     "description": "SEND 2 TEAMS(object) EXACTLY in \"teams\" array, can be just 2 teams of a single player each, result must be 1, 0 or 0.5",
                     "content": {
-                        "application/json": {
+                        "*/*": {
                             "schema": {
                                 "$ref": "#/components/schemas/Match"
                             }
@@ -708,7 +973,7 @@
                     "200": {
                         "description": "successful operation",
                         "content": {
-                            "application/json": {
+                            "*/*": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -867,7 +1132,7 @@
                     "200": {
                         "description": "Success",
                         "content": {
-                            "application/json": {
+                            "*/*": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -961,7 +1226,7 @@
                     "200": {
                         "description": "successful operation",
                         "content": {
-                            "application/json": {
+                            "*/*": {
                                 "schema": {
                                     "$ref": "#/components/schemas/User"
                                 }
@@ -1035,7 +1300,7 @@
                     "200": {
                         "description": "successful operation",
                         "content": {
-                            "application/json": {
+                            "*/*": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -1064,7 +1329,18 @@
                                                     },
                                                     "rating_volatility": {
                                                         "type": "integer",
-                                                        "format": "int32"
+                                                        "format": "int32",
+                                                        "example": 0.59234923
+                                                    },
+                                                    "wins": {
+                                                        "type": "integer",
+                                                        "format": "int32",
+                                                        "example": 32
+                                                    },
+                                                    "loses": {
+                                                        "type": "integer",
+                                                        "format": "int32",
+                                                        "example": 27
                                                     },
                                                     "links": {
                                                         "type": "array",
@@ -1142,7 +1418,7 @@
                     "200": {
                         "description": "successful operation",
                         "content": {
-                            "application/json": {
+                            "*/*": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
