@@ -155,15 +155,30 @@ class GameTest extends TestCase
     {
         $game = Game::factory()->create(["client_id" => $this->client->getKey()]);
         $user = User::factory()->create();
-        $game->users()->attach($user);
-        $response = $this->json('get', "/games/{$game->slug}/ranking/{$user->slug}", [], $this->header);
-        $response->assertJsonStructure(["rank"]);
-        $response->assertJsonFragment([
-            "rank" => [
-                "rank" => 1,
-                "all" => 1
-            ]
+        $game->users()->attach($user, [
+            "rating" => 1500,
         ]);
+        $response = $this->json('get', "/games/{$game->slug}/ranking/{$user->slug}?maxRatingDeviation\\=350", [], $this->header);
+        $response->assertJsonFragment([]);
         $response->assertStatus(200);
+    }
+
+    /** @test */
+    public function a_lower_rating_user_will_not_rank_first()
+    {
+        $game = Game::factory()->create(["client_id" => $this->client->getKey()]);
+        $user = User::factory()->create();
+        $game->users()->attach($user, [
+            "rating" => 1500,
+            "rating_deviation" => 200
+        ]);
+        $user = User::factory()->create();
+        $game->users()->attach($user, [
+            "rating" => 1499,
+            "rating_deviation" => 200
+        ]);
+        $response = $this->json('get', "/games/{$game->slug}/ranking/{$user->slug}?maxRatingDeviation=350", [], $this->header);
+        $this->assertEquals(2, $response->json()["rank"]["rank"]);
+
     }
 }

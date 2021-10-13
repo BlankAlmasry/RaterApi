@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MatchController;
@@ -18,18 +19,18 @@ use Laravel\Passport\Http\Controllers\AccessTokenController;
 */
 
 Route::get('/login', [HomeController::class, 'login'])->name('login');
-Route::post('/login', [AccessTokenController::class,'issueToken']);
+Route::post('/login', [AccessTokenController::class, 'issueToken']);
 
 Route::middleware(['client'])->group(function () {
-    Route::get('/games',[GameController::class,'index']);
-    Route::post('/games',[GameController::class,'store']);
-    Route::get('/games/{game}',[GameController::class,'show']);
-    Route::patch('/games/{game}',[GameController::class,'update']);
-    Route::delete('/games/{game}',[GameController::class,'delete']);
-    Route::get('/games/{game}/ranking',[GameController::class,'ranking']);
-    Route::get('/games/{game}/ranking/{user}',[GameController::class,'userRank']);
-    Route::get('/games/{game}/users',[GameController::class,'indexUsers']);
-    Route::get('/games/{game}/users/{user}',[GameController::class,'showUser']);
+    Route::get('/games', [GameController::class, 'index']);
+    Route::post('/games', [GameController::class, 'store']);
+    Route::get('/games/{game}', [GameController::class, 'show']);
+    Route::patch('/games/{game}', [GameController::class, 'update']);
+    Route::delete('/games/{game}', [GameController::class, 'delete']);
+    Route::get('/games/{game}/ranking', [GameController::class, 'ranking']);
+    Route::get('/games/{game}/ranking/{user}', [GameController::class, 'userRank']);
+    Route::get('/games/{game}/users', [GameController::class, 'indexUsers']);
+    Route::get('/games/{game}/users/{user}', [GameController::class, 'showUser']);
 
     Route::get('/users', [UserController::class, 'index']);
     Route::get('/users/{user}', [UserController::class, 'show']);
@@ -37,10 +38,10 @@ Route::middleware(['client'])->group(function () {
     Route::get('/users/{user}/games', [UserController::class, 'indexGames']);
     Route::get('/users/{user}/matches', [UserController::class, 'indexMatches']);
 
-    Route::get('/games/{game}/matches',[MatchController::class,'index']);
-    Route::post('/games/{game}/matches',[MatchController::class,'store']);
-    Route::get('/games/{game}/matches/{match}',[MatchController::class,'show']);
-    Route::delete('/games/{game}/matches/{match}',[MatchController::class,'delete']);
+    Route::get('/games/{game}/matches', [MatchController::class, 'index']);
+    Route::post('/games/{game}/matches', [MatchController::class, 'store']);
+    Route::get('/games/{game}/matches/{match}', [MatchController::class, 'show']);
+    Route::delete('/games/{game}/matches/{match}', [MatchController::class, 'delete']);
 });
 
 

@@ -57,17 +57,29 @@ class GameController extends Controller
     {
         $game = $this->getGame($game);
         $users = $game->users()
-            ->where("rating_deviation", "<", $request->maxRatingDeviation ?? "75")
+            ->where("rating_deviation", "<", $request->maxRatingDeviation ?? "100")
             ->orderBy("rating", "desc")
             ->paginate(10);
         return RankingResource::collection($users);
     }
 
-    public function userRank($game, $user)
+    public function userRank(Request $request, $game, $user)
     {
         $game = $this->getGame($game);
-        $user = $game->users()->where('slug', $user)->first();
-        $usersRank = $game->users()->orderBy("rating")->pluck("id")->toArray();
+        $user = $game->users()->where('slug', $user)->firstOrFAil();
+        $usersRank = $game->users()
+            ->where("rating_deviation", "<", $request->maxRatingDeviation ?? "100")
+            ->orderBy("rating", "desc")
+            ->pluck("id")
+            ->toArray();
+        if (empty($usersRank) || !in_array($user->id, $usersRank)) {
+            return response([
+                "rank" => [
+                    "rank" => null,
+                    "all" => count($usersRank)
+                ]
+            ], 200);
+        }
         $rank = array_search($user->id, $usersRank);
         return response([
             "rank" => [
