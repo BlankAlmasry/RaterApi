@@ -456,7 +456,7 @@
                         }
                     },
                     {
-                        "name": "user",
+                        "name": "userSlug",
                         "in": "path",
                         "description": "the user slug, you can send id or anything and it would deal with it like a slug, it will return null on rank if user doesnt met the coniditions",
                         "required": true,
