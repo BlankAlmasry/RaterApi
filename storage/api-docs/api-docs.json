@@ -35,7 +35,7 @@
                     "200": {
                         "description": "Success",
                         "content": {
-                            "*/*": {
+                            "application/json": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -112,7 +112,7 @@
                 "requestBody": {
                     "description": "Game details",
                     "content": {
-                        "*/*": {
+                        "application/json": {
                             "schema": {
                                 "$ref": "#/components/schemas/Game"
                             }
@@ -160,7 +160,7 @@
                     "200": {
                         "description": "Success",
                         "content": {
-                            "*/*": {
+                            "application/json": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -245,7 +245,7 @@
                 "requestBody": {
                     "description": "Game details",
                     "content": {
-                        "*/*": {
+                        "application/json": {
                             "schema": {
                                 "$ref": "#/components/schemas/Game"
                             }
@@ -306,7 +306,7 @@
                     "200": {
                         "description": "Success",
                         "content": {
-                            "*/*": {
+                            "application/json": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -456,7 +456,7 @@
                         }
                     },
                     {
-                        "name": "userSlug",
+                        "name": "user",
                         "in": "path",
                         "description": "the user slug, you can send id or anything and it would deal with it like a slug, it will return null on rank if user doesnt met the coniditions",
                         "required": true,
@@ -478,7 +478,7 @@
                     "200": {
                         "description": "Success",
                         "content": {
-                            "*/*": {
+                            "application/json": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -536,7 +536,7 @@
                     "200": {
                         "description": "Success",
                         "content": {
-                            "*/*": {
+                            "application/json": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -664,7 +664,7 @@
                     "201": {
                         "description": "Success",
                         "content": {
-                            "*/*": {
+                            "application/json": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -760,7 +760,7 @@
                     "200": {
                         "description": "successful operation",
                         "content": {
-                            "*/*": {
+                            "application/json": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -912,7 +912,7 @@
                 "requestBody": {
                     "description": "SEND 2 TEAMS(object) EXACTLY in \"teams\" array, can be just 2 teams of a single player each, result must be 1, 0 or 0.5",
                     "content": {
-                        "*/*": {
+                        "application/json": {
                             "schema": {
                                 "$ref": "#/components/schemas/Match"
                             }
@@ -973,7 +973,7 @@
                     "200": {
                         "description": "successful operation",
                         "content": {
-                            "*/*": {
+                            "application/json": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -1132,7 +1132,7 @@
                     "200": {
                         "description": "Success",
                         "content": {
-                            "*/*": {
+                            "application/json": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -1226,7 +1226,7 @@
                     "200": {
                         "description": "successful operation",
                         "content": {
-                            "*/*": {
+                            "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/User"
                                 }
@@ -1300,7 +1300,7 @@
                     "200": {
                         "description": "successful operation",
                         "content": {
-                            "*/*": {
+                            "application/json": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
@@ -1418,7 +1418,7 @@
                     "200": {
                         "description": "successful operation",
                         "content": {
-                            "*/*": {
+                            "application/json": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
